@@ -11,7 +11,18 @@ cd ~/mlops/lab1
 
 if ! [ -d data ]; then mkdir data; fi
 
+echo 'Start data creation'
 python data_creation.py
+echo 'End data creation'
+
+echo 'Start data prepocessing'
 python data_preprocessing.py
+echo 'End data prepocessing'
+
+echo 'Start model fiting'
 python model_preparation.py
+echo 'End model fiting'
+
+echo 'Start model testing'
 python model_testing.py
+echo 'End model testing'

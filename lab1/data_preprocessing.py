@@ -1,6 +1,12 @@
+import warnings
 import os
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
-from settings import DATASET_PATH, DATASET_SPLITTED_FOLDER, DATASET_TRAIN_FOLDER, DATASET_TEST_FOLDER
+from settings import (
+    DATASET_PATH, DATASET_SPLITTED_FOLDER,
+    DATASET_TRAIN_FOLDER, DATASET_TEST_FOLDER
+)
+
+warnings.filterwarnings('ignore')
 
 image_datagen = ImageDataGenerator(
     rescale=1./255,
