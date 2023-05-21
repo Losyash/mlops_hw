@@ -1,8 +1,5 @@
 #!/bin/bash
 
-conda activate ~/mlops/lab1/conda
-pip install gdown zipfile36 split-folders tensorflow pillow
-
 cd ~/mlops/lab1
 
 if ! [ -d data ]; then
