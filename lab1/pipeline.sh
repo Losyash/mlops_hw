@@ -5,7 +5,7 @@ if conda env list | grep -q lab1; then echo "Environment already exists"; else c
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate lab1
 
-pip install zipfile36 split-folders tensorflow pillow
+pip install gdown zipfile36 split-folders tensorflow pillow
 
 cd ~/mlops/lab1
 
