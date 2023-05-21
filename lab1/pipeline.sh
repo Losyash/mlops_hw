@@ -1,7 +1,7 @@
 #!/bin/bash
 
 conda activate ~/mlops/lab1/conda
-pip install gdown, zipfile36, split-folders, tensorflow
+pip install gdown zipfile36 split-folders tensorflow
 
 cd ~/mlops/lab1
 
