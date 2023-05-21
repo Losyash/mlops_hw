@@ -25,4 +25,3 @@ echo 'End model fiting'
 
 echo 'Start model testing'
 python model_testing.py
-echo 'End model testing'
