@@ -1,27 +1,13 @@
 # import pickle
 import tensorflow as tf
-from tensorflow.python import keras
-from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
+from settings import (
+    DATASET_PATH, DATASET_SPLITTED_FOLDER, DATASET_TRAIN_FOLDER,
+    MODEL_PATH, IMAGE_HEIGHT, IMAGE_WIDTH, BATCH_SIZE, NUM_EPOCHS, NUM_CLASSES
+)
 
-DATASET_PATH = 'lab1/data'
-
-DATASET_RAW_FOLDER = 'faces_raw' 
-DATASET_SPLITTED_FOLDER = 'faces_splitted'
-DATASET_TRAIN_FOLDER = 'train';
-DATASET_TEST_FOLDER = 'val';
-
-MODEL_PATH = 'lab1/model'
-
-IMAGE_HEIGHT = 180
-IMAGE_WIDTH = 180
-
-BATCH_SIZE = 64
-NUM_EPOCHS = 1
-NUM_CLASSES = 2
-
-train_ds = tf.keras.preprocessing.image_dataset_from_directory(f'{DATASET_PATH }/{DATASET_SPLITTED_FOLDER}/{DATASET_TRAIN_FOLDER}',
+train_dataset = tf.keras.preprocessing.image_dataset_from_directory(f'{DATASET_PATH }/{DATASET_SPLITTED_FOLDER}/{DATASET_TRAIN_FOLDER}',
     seed=42,
     label_mode = 'int',
     image_size=(IMAGE_HEIGHT, IMAGE_WIDTH),
@@ -29,7 +15,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(f'{DATASET_PATH }
 )
 
 model = Sequential([
-    layers.experimental.preprocessing.Rescaling(1./255, input_shape=(IMAGE_HEIGHT, IMAGE_WIDTH, 3)),
+    layers.experimental.preprocessing.Rescaling(1. / 255, input_shape=(IMAGE_HEIGHT, IMAGE_WIDTH, 3)),
     layers.Conv2D(16, 3, padding='same', activation='relu'),
     layers.MaxPooling2D(),
     layers.Conv2D(32, 3, padding='same', activation='relu'),
@@ -48,8 +34,9 @@ model.compile(
     metrics=['accuracy'])
 
 
-history = model.fit(
-    train_ds, epochs = NUM_EPOCHS,
+model.fit(
+    train_dataset,
+    epochs = NUM_EPOCHS,
     verbose = 1
 )
 
